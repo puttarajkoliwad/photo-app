@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  attr_accessor :card_number, :card_cvv, :card_expires_month, :card_expires_year
+  attr_accessor :card_number, :card_cvv, :card_expires_month, :card_expires_year, :card_name
   belongs_to :user
 
   def self.month_options
@@ -11,8 +11,8 @@ class Payment < ApplicationRecord
   end
 
   def process_payment
-    customer = Stripe::Customer.create email: email, card: token
-    Stripe::Charge.create customer: customer_id, amount: 1000, description: 'premium', currency: 'usd'
+    customer = Stripe::Customer.create email: email, name: card_name, source: 'tok_visa'
+    Stripe::Charge.create customer: customer.id, amount: 1000, description: 'premium', currency: 'usd'
   end
   
 end

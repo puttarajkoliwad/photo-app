@@ -33,6 +33,7 @@ $(document).on('ready turbolinks:load', function() {
       $("[data-stripe=exp-year]").remove();
       $("[data-stripe=exp-month]").remove();
       $("[data-stripe=label]").remove();
+      $("[data-stripe=name]").remove();
       $form.get(0).submit();
     }
 

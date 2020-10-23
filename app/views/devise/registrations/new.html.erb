@@ -1,5 +1,5 @@
 <script language="Javascript">
-  Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>")
+  Stripe.setPublishableKey("<%= Rails.application.credentials.stripe[:STRIPE_TEST_PUBLISHABLE_KEY] %>")
 </script>
 
 <h1><%= t('.sign_up') %></h1>
@@ -52,6 +52,10 @@
                         'data-stripe' => 'exp-year',
                         class:"form-control", required: true %>
         </div>
+      </div>
+      <div class="form-group col-md-6 no-left-padding">
+        <%= p.label :card_name, 'Name on card', data: { stripe: 'label' } %>
+        <%= p.text_field :card_cvv, class:"form-control", required: true, data: { stripe: 'name' } %>
       </div>
     </div>
   <% end %>
