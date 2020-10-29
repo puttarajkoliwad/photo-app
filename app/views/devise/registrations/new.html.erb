@@ -55,7 +55,7 @@
       </div>
       <div class="form-group col-md-6 no-left-padding">
         <%= p.label :card_name, 'Name on card', data: { stripe: 'label' } %>
-        <%= p.text_field :card_cvv, class:"form-control", required: true, data: { stripe: 'name' } %>
+        <%= p.text_field :card_name, class:"form-control", required: true, data: { stripe: 'name' } %>
       </div>
     </div>
   <% end %>

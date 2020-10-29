@@ -11,7 +11,8 @@ class Payment < ApplicationRecord
   end
 
   def process_payment
-    customer = Stripe::Customer.create email: email, name: card_name, source: 'tok_visa'
+    customer = Stripe::Customer.create email: email, name: "card_holder_name", source: 'tok_visa',
+                                        address: { line1: '510 Townsend St', postal_code: '98140', city: 'San Francisco', state: 'CA', country: 'US' }
     Stripe::Charge.create customer: customer.id, amount: 1000, description: 'premium', currency: 'usd'
   end
   
